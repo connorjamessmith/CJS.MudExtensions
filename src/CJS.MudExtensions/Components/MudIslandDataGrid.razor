@@ -8,10 +8,9 @@
            Outlined="@Outlined"
            Square="@Square">
 
-    <MudDataGrid @ref="_dataGrid"
-                 T="T"
+    <MudDataGrid T="T"
                  Items="Items"
-                 ServerData="ServerData"
+                 ServerData="@ServerData"
                  Dense="Dense"
                  FixedHeader="FixedHeader"
                  FixedFooter="FixedFooter"
@@ -37,11 +36,8 @@
 </MudIsland>
 
 @code {
-    private MudDataGrid<T>? _dataGrid;
-
     [Parameter] public IEnumerable<T>? Items { get; set; }
-    [Parameter] public Func<GridState<T>, Task<GridData<T>>>? ServerData { get; set; }
-
+    [Parameter] public Func<GridState<T>, CancellationToken, Task<GridData<T>>>? ServerData { get; set; }
     [Parameter] public RenderFragment? ToolBarContent { get; set; }
     [Parameter, EditorRequired] public RenderFragment Columns { get; set; } = null!;
     [Parameter] public RenderFragment? PagerContent { get; set; }
