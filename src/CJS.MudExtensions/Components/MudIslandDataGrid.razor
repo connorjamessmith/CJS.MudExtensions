@@ -8,7 +8,8 @@
            Outlined="@Outlined"
            Square="@Square">
 
-    <MudDataGrid T="T"
+    <MudDataGrid @ref="_dataGrid"
+                 T="T"
                  Items="Items"
                  ServerData="@ServerData"
                  Dense="Dense"
@@ -36,6 +37,10 @@
 </MudIsland>
 
 @code {
+
+    @* ReSharper disable once NotAccessedField.Local *@
+    private MudDataGrid<T>? _dataGrid;
+
     [Parameter] public IEnumerable<T>? Items { get; set; }
     [Parameter] public Func<GridState<T>, CancellationToken, Task<GridData<T>>>? ServerData { get; set; }
     [Parameter] public RenderFragment? ToolBarContent { get; set; }
