@@ -1,0 +1,66 @@
+﻿@page "/"
+
+<PageTitle>DataGrid Demo</PageTitle>
+
+<MudIslandDataGrid T="DemoLead" Items="_items" IslandLayout="@(IslandLayout.FillAndScroll)">
+    <ToolBarContent>
+        <MudGrid Spacing="1" Class="pt-1 pb-1">
+            <MudItem xs="12">
+                <MudStack Row Spacing="2" AlignItems="AlignItems.Center" Justify="Justify.Center">
+                    <MudText Typo="Typo.h5">Leads</MudText>
+                    <MudSpacer/>
+                    <MudTextField T="string" Placeholder="Search" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium"/>
+                </MudStack>
+            </MudItem>
+        </MudGrid>
+    </ToolBarContent>
+
+    <Columns>
+        <PropertyColumn T="DemoLead" TProperty="string" Property="x => x.Name"/>
+        <PropertyColumn T="DemoLead" TProperty="string" Property="x => x.County"/>
+        <PropertyColumn T="DemoLead" TProperty="string" Property="x => x.Status"/>
+        <PropertyColumn T="DemoLead" TProperty="DateTime" Property="x => x.LastContactAt" Title="Last Contact At"/>
+
+        <TemplateColumn T="DemoLead" Title="Actions" StickyRight CellClass="mud-cjs-island-datagrid-actions-cell" HeaderClass="mud-cjs-island-datagrid-actions-header">
+            <CellTemplate>
+                <MudStack Row Spacing="0">
+                    <MudTooltip Text="Edit">
+                        <MudIconButton Icon="@Icons.Material.Filled.Edit" Size="Size.Small"/>
+                    </MudTooltip>
+                    <MudTooltip Text="Archive">
+                        <MudIconButton Icon="@Icons.Material.Filled.Archive" Size="Size.Small"/>
+                    </MudTooltip>
+                    <MudTooltip Text="Delete">
+                        <MudIconButton Icon="@Icons.Material.Filled.Delete" Size="Size.Small" Color="Color.Error"/>
+                    </MudTooltip>
+                </MudStack>
+            </CellTemplate>
+        </TemplateColumn>
+    </Columns>
+
+    <PagerContent>
+        <MudDataGridPager T="DemoLead" PageSizeOptions="[25, 50, 100]"/>
+    </PagerContent>
+</MudIslandDataGrid>
+
+@code {
+
+    private readonly List<DemoLead> _items = Enumerable.Range(1, 150)
+        .Select(i => new DemoLead
+        {
+            Name = $"Lead {i:000}",
+            County = i % 3 == 0 ? "Bristol" : i % 3 == 1 ? "Somerset" : "Wiltshire",
+            Status = i % 4 == 0 ? "New" : i % 4 == 1 ? "Contacted" : i % 4 == 2 ? "Qualified" : "Archived",
+            LastContactAt = DateTime.UtcNow.AddDays(-i)
+        })
+        .ToList();
+
+    private sealed class DemoLead
+    {
+        public string Name { get; init; } = string.Empty;
+        public string County { get; init; } = string.Empty;
+        public string Status { get; init; } = string.Empty;
+        public DateTime LastContactAt { get; init; }
+    }
+
+}

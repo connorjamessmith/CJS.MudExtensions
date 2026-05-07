@@ -1,0 +1,75 @@
+@namespace CJS.MudExtensions.Components
+@typeparam T
+
+<MudIsland Class="@Class" Style="@Style"
+           Layout="@IslandLayout"
+           Padding="@Padding"
+           Elevation="@Elevation"
+           Outlined="@Outlined"
+           Square="@Square">
+
+    <MudDataGrid @ref="_dataGrid"
+                 T="T"
+                 Items="Items"
+                 ServerData="ServerData"
+                 Dense="Dense"
+                 FixedHeader="FixedHeader"
+                 FixedFooter="FixedFooter"
+                 HeaderClass="@HeaderClass"
+                 Class="@InnerClassname"
+                 Style="@InnerStyle"
+                 SelectOnRowClick="SelectOnRowClick"
+                 RowClick="RowClick"
+                 Elevation="0">
+
+        <ToolBarContent>
+            @ToolBarContent
+        </ToolBarContent>
+
+        <Columns>
+            @Columns
+        </Columns>
+
+        <PagerContent>
+            @PagerContent
+        </PagerContent>
+    </MudDataGrid>
+</MudIsland>
+
+@code {
+    private MudDataGrid<T>? _dataGrid;
+
+    [Parameter] public IEnumerable<T>? Items { get; set; }
+    [Parameter] public Func<GridState<T>, Task<GridData<T>>>? ServerData { get; set; }
+
+    [Parameter] public RenderFragment? ToolBarContent { get; set; }
+    [Parameter, EditorRequired] public RenderFragment Columns { get; set; } = null!;
+    [Parameter] public RenderFragment? PagerContent { get; set; }
+
+    [Parameter] public bool Dense { get; set; } = true;
+    [Parameter] public bool FixedHeader { get; set; } = true;
+    [Parameter] public bool FixedFooter { get; set; } = true;
+    [Parameter] public bool SelectOnRowClick { get; set; }
+
+    [Parameter] public EventCallback<DataGridRowClickEventArgs<T>> RowClick { get; set; }
+
+    // Outer wrapper (MudIsland)
+    [Parameter] public string Class { get; set; } = string.Empty;
+    [Parameter] public string Style { get; set; } = string.Empty;
+    [Parameter] public IslandLayout IslandLayout { get; set; } = IslandLayout.FillAndScroll;
+    [Parameter] public string? Padding { get; set; }
+    [Parameter] public int Elevation { get; set; } = 3;
+    [Parameter] public bool Outlined { get; set; }
+    [Parameter] public bool Square { get; set; }
+
+    // Inner grid (MudDataGrid)
+    [Parameter] public string InnerClass { get; set; } = string.Empty;
+    [Parameter] public string InnerStyle { get; set; } = string.Empty;
+    [Parameter] public string HeaderClass { get; set; } = "mud-cjs-island-datagrid-no-wrap";
+
+    private string InnerClassname
+        => string.IsNullOrWhiteSpace(InnerClass)
+            ? "mud-cjs-island-datagrid"
+            : $"{InnerClass} mud-cjs-island-datagrid";
+
+}

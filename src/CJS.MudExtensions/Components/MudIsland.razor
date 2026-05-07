@@ -1,0 +1,50 @@
+@namespace CJS.MudExtensions.Components
+
+<MudPaper Class="@Classname" Style="@Stylename" Elevation="@Elevation" Outlined="@Outlined" Square="@Square">
+    @ChildContent
+</MudPaper>
+
+@code {
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+
+    // MudBlazor Elevation=1 is very subtle; default to a clearer "card" look.
+    [Parameter] public int Elevation { get; set; } = 3;
+    [Parameter] public bool Outlined { get; set; }
+    [Parameter] public bool Square { get; set; }
+
+    [Parameter] public string Class { get; set; } = string.Empty;
+    [Parameter] public string Style { get; set; } = string.Empty;
+
+    [Parameter] public IslandLayout Layout { get; set; } = IslandLayout.FillAndScroll;
+
+    [Parameter] public string? Padding { get; set; }
+
+    private string Classname
+        => string.IsNullOrWhiteSpace(Class)
+            ? $"mud-cjs-island {LayoutClass}".Trim()
+            : $"mud-cjs-island {LayoutClass} {Class}".Trim();
+
+    private string LayoutClass => Layout switch
+    {
+        IslandLayout.FillAndScroll => "mud-cjs-island-fill mud-cjs-island-scroll",
+        IslandLayout.FillNoScroll => "mud-cjs-island-fill mud-cjs-island-no-scroll",
+        _ => string.Empty,
+    };
+
+    private string Stylename
+    {
+        get
+        {
+            var sb = new System.Text.StringBuilder();
+
+            if (!string.IsNullOrWhiteSpace(Padding))
+                sb.Append($"padding:{Padding};");
+
+            if (!string.IsNullOrWhiteSpace(Style))
+                sb.Append(Style);
+
+            return sb.ToString();
+        }
+    }
+
+}

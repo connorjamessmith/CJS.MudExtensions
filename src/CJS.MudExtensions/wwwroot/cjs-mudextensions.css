@@ -1,0 +1,85 @@
+.mud-cjs-island {
+    display: flex;
+    flex-direction: column;
+}
+
+.mud-cjs-island-fill {
+    flex: 1 1 auto;
+    min-height: 0;
+}
+
+.mud-cjs-island-scroll {
+    overflow: auto;
+}
+
+.mud-cjs-island-no-scroll {
+    overflow: hidden;
+}
+
+/* If an island opts out of scrolling, also disable the grid's internal scroll region. */
+.mud-cjs-island-no-scroll .mud-cjs-island-datagrid {
+    overflow: hidden;
+}
+
+.mud-cjs-island-no-scroll .mud-cjs-island-datagrid .mud-table-container {
+    overflow: hidden;
+}
+
+/* Sticky action columns */
+.mud-cjs-island-datagrid-actions-header,
+.mud-cjs-island-datagrid-actions-cell {
+    background-color: var(--mud-palette-surface) !important;
+    width: 1%;
+    white-space: nowrap;
+}
+
+.mud-cjs-island-datagrid-no-wrap {
+    white-space: nowrap;
+}
+
+/* Main data grid container */
+.mud-cjs-island-datagrid {
+    flex: 1 1 auto;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* Nested MudBlazor table components */
+.mud-cjs-island-datagrid .mud-table {
+    flex: 1 1 auto;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.mud-cjs-island-datagrid .mud-table-toolbar {
+    flex-shrink: 0;
+    flex-grow: 0;
+    height: auto;
+}
+
+.mud-cjs-island-datagrid .mud-table-container {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-x: auto;
+    overflow-y: auto;
+}
+
+.mud-cjs-island-datagrid .mud-table-cell {
+    padding: 0.35rem 0.5rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.mud-cjs-island-datagrid .mud-table-head .mud-table-cell {
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+}
+
+.mud-cjs-island-datagrid .mud-table-pagination {
+    flex: 0 0 auto;
+    border-top: 1px solid var(--mud-palette-table-lines);
+}

@@ -1,0 +1,18 @@
+﻿@inherits LayoutComponentBase
+
+<MudThemeProvider />
+<MudDialogProvider />
+<MudSnackbarProvider />
+<MudPopoverProvider />
+
+<MudLayout Class="app-layout">
+    <MudAppBar Elevation="1" Fixed="false">
+        <MudText Typo="Typo.h6">CJS.MudExtensions Demo</MudText>
+        <MudSpacer />
+        <MudButton Variant="Variant.Text" Color="Color.Inherit" Href="/">DataGrid</MudButton>
+    </MudAppBar>
+
+    <MudMainContent Class="pa-4 app-main">
+        @Body
+    </MudMainContent>
+</MudLayout>

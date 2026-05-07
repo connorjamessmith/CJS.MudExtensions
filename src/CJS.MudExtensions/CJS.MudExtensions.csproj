@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+    <PropertyGroup>
+        <TargetFramework>net10.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+
+        <!-- NuGet package metadata (keep minimal; fill in URLs as needed) -->
+        <PackageId>CJS.MudExtensions</PackageId>
+        <Title>CJS.MudExtensions</Title>
+        <Authors>CJS Solutions</Authors>
+        <Description>MudBlazor extension components: MudIsland and MudIslandDataGrid convenience wrappers with layout and scrolling helpers.</Description>
+        <PackageTags>mudblazor;blazor;components</PackageTags>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <RepositoryType>git</RepositoryType>
+        <RepositoryUrl>https://github.com/connorjamessmith/CJS.MudExtensions</RepositoryUrl>
+        <PackageProjectUrl>https://github.com/connorjamessmith/CJS.MudExtensions</PackageProjectUrl>
+        <Version>1.0.0</Version>
+    </PropertyGroup>
+
+
+    <ItemGroup>
+        <SupportedPlatform Include="browser"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="10.0.0"/>
+        <PackageReference Include="MudBlazor" Version="8.15.0"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Include="..\..\README.md" Pack="true" PackagePath="\"/>
+    </ItemGroup>
+
+</Project>
