@@ -73,4 +73,13 @@
             ? "mud-cjs-island-datagrid"
             : $"{InnerClass} mud-cjs-island-datagrid";
 
+    public Task ReloadServerDataAsync()
+    {
+        // Only meaningful for server-mode grids.
+        if (ServerData is null)
+            return Task.CompletedTask;
+
+        return _dataGrid?.ReloadServerData() ?? Task.CompletedTask;
+    }
+
 }
