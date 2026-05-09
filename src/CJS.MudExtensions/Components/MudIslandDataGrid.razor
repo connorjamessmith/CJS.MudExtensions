@@ -1,6 +1,8 @@
 @namespace CJS.MudExtensions.Components
 @typeparam T
 
+@attribute [CascadingTypeParameter(nameof(T))]
+
 <MudIsland Class="@Class" Style="@Style"
            Layout="@IslandLayout"
            Padding="@Padding"
@@ -33,7 +35,7 @@
         <PagerContent>
             @PagerContent
         </PagerContent>
-    </MudDataGrid>
+     </MudDataGrid>
 </MudIsland>
 
 @code {

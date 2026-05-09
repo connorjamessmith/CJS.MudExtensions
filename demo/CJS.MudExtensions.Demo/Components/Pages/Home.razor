@@ -16,12 +16,12 @@
     </ToolBarContent>
 
     <Columns>
-        <PropertyColumn T="DemoLead" TProperty="string" Property="x => x.Name"/>
-        <PropertyColumn T="DemoLead" TProperty="string" Property="x => x.County"/>
-        <PropertyColumn T="DemoLead" TProperty="string" Property="x => x.Status"/>
-        <PropertyColumn T="DemoLead" TProperty="DateTime" Property="x => x.LastContactAt" Title="Last Contact At"/>
+        <PropertyColumn Property="x => x.Name"/>
+        <PropertyColumn Property="x => x.County"/>
+        <PropertyColumn Property="x => x.Status"/>
+        <PropertyColumn Property="x => x.LastContactAt" Title="Last Contact At"/>
 
-        <TemplateColumn T="DemoLead" Title="Actions" StickyRight CellClass="mud-cjs-island-datagrid-actions-cell" HeaderClass="mud-cjs-island-datagrid-actions-header">
+        <TemplateColumn Title="Actions" StickyRight CellClass="mud-cjs-island-datagrid-actions-cell" HeaderClass="mud-cjs-island-datagrid-actions-header">
             <CellTemplate>
                 <MudStack Row Spacing="0">
                     <MudTooltip Text="Edit">
@@ -39,7 +39,7 @@
     </Columns>
 
     <PagerContent>
-        <MudDataGridPager T="DemoLead" PageSizeOptions="[25, 50, 100]"/>
+        <MudDataGridPager PageSizeOptions="[25, 50, 100]"/>
     </PagerContent>
 </MudIslandDataGrid>
 

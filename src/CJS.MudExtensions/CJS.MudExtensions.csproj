@@ -16,7 +16,7 @@
         <RepositoryType>git</RepositoryType>
         <RepositoryUrl>https://github.com/connorjamessmith/CJS.MudExtensions</RepositoryUrl>
         <PackageProjectUrl>https://github.com/connorjamessmith/CJS.MudExtensions</PackageProjectUrl>
-        <Version>2.3.2</Version>
+        <Version>2.4.0</Version>
     </PropertyGroup>
 
 
